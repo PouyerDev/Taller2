@@ -1,0 +1,14 @@
+# Usar una imagen base de OpenJDK
+FROM openjdk:11-jre-slim
+
+# Establecer el directorio de trabajo
+WORKDIR /app
+
+# Copiar el código fuente del cliente al contenedor
+COPY . .
+
+# Compilar el proyecto
+RUN ./gradlew build
+
+# Comando para ejecutar el cliente
+CMD ["java", "-cp", "build/classes/java/main", "taller2.Client"]

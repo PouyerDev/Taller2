@@ -1,0 +1,17 @@
+# Usar una imagen base de OpenJDK
+FROM openjdk:11-jre-slim
+
+# Establecer el directorio de trabajo
+WORKDIR /app
+
+# Copiar el código fuente del servidor al contenedor
+COPY . .
+
+# Compilar el proyecto
+RUN ./gradlew build
+
+# Exponer el puerto 8080
+EXPOSE 8080
+
+# Comando para ejecutar el servidor
+CMD ["java", "-cp", "build/classes/java/main", "taller2.Server"]
